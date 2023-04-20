@@ -1,0 +1,3 @@
+
+<app-user [userdata]="user" [evenorodd]="i" *ngFor="let user of users; let i =index" ></app-user>
+<app-user-form (addUserData)="onAddUserData($event)"></app-user-form>
