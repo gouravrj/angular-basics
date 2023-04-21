@@ -1,12 +1,22 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component, EventEmitter, Output,OnInit } from '@angular/core';
+import { UserService } from '../user.service';
 
 @Component({
   selector: 'app-user-form',
   templateUrl: './user-form.component.html',
   styleUrls: ['./user-form.component.css']
 })
-export class UserFormComponent {
+export class UserFormComponent implements OnInit{
   @Output() public addUserData = new EventEmitter();
+
+  constructor(private userService:UserService){
+
+  }
+
+  ngOnInit(): void {
+
+  }
+
 
   onSubmit(username:string,name:string,phone:string)
   {
@@ -15,7 +25,7 @@ export class UserFormComponent {
       Name : name,
       userPhone : phone
     }
-    console.log(user)
-    this.addUserData.emit(user);
+
+    this.userService.addUserData(user)
   }
 }
